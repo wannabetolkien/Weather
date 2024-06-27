@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-image: url('bg.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+
+    h1 {
+      margin: 20px;
+      font-size: 28px;
+      font-family: 'Acme', sans-serif;
+    }
+
+    h2 {
+      margin: 15px 0;
+      font-size: 24px;
+      position: relative;
+      cursor: pointer;
+      transition: 1s;
+    }
+
+    h2::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #73a6dc;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 1s ease-in-out;
+    }
+
+    h2:hover {
+      color: #ffffff;
+      background-color: black;
+      font-size: bold;
+      font-family: 'Acme', sans-serif;
+      text-align: center;
+    }
+
+    h2:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .content {
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .point {
+      margin-bottom: 20px;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #8ebae9;
+    }
+
+
+    nav {
+      z-index: 99;
+      width: 100%;
+      background: #83a7cb;
+    }
+
+    nav .wrapper {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background-color: steelblue;
+    }
+
+    .wrapper .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 75px;
+      width: 75px;
+    }
+
+    .logo a {
+      color: #000000;
+      font-family: 'Acme', sans-serif;
+      font-size: 25px;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .wrapper .nav-links {
+      display: flex;
+      gap: 75px;
+      margin-right: 75px;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links li a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 9px 15px;
+      border-radius: 5px;
+      transition: background 1s ease;
+    }
+
+    .nav-links li a:hover {
+      font-weight:bold ;
+    }
+
+    .nav-links .mobile-item {
+      display: none;
+    }
+
+    .wrapper .btn {
+      color: #000000;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media screen and (max-width: 970px) {
+      .wrapper .btn {
+        display: block;
+      }
+
+      .wrapper .nav-links {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        max-width: 350px;
+        top: 0;
+        left: -100%;
+        background: #242526;
+        display: block;
+        padding: 50px 10px;
+        line-height: 50px;
+        overflow-y: auto;
+        box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
+        transition: all 0.3s ease;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .nav-links li a {
+        padding: 0 20px;
+        display: block;
+        font-size: 20px;
+      }
+
+      .nav-links .desktop-item {
+        display: none;
+      }
+
+      .nav-links .mobile-item {
+        display: block;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 500;
+        padding-left: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .nav-links .mobile-item:hover {
+        font-weight: bold;
+      }
+    }
+
+  
+
+    .iframe-container {
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 56.25%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="wrapper">
+      <div class="logo">
+        <img src="./logo.png" alt="logo">
+        <a href="#">Weather Forecast</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./usage.html">Usage</a></li>
+        <li><a href="./about.html" class="desktop-item">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h2>Importance of Weather Forecasting</h2>
+    <div class="point">
+      <p>
+        <strong>Agriculture:</strong> Farmers rely on weather forecasts to plan their planting and harvesting.
+        Temperature and precipitation greatly affect crop growth. Accurate forecasts help minimize losses.
+      </p>
+    </div>
+    <div class="point">
+      <p>
+        <strong>Transportation:</strong> Weather forecasts assist in planning safe and efficient transportation,
+        including air travel, maritime navigation, and road conditions, ensuring passenger safety.
+      </p>
+    </div>
+    <hr>
+    <h2>Types of Weather Forecasting</h2>
+    <p>
+      <strong>Short Range Forecasting:</strong> This type of forecasting covers 1-2 days and is essential for
+      daily activity planning, such as deciding what to wear or whether to carry an umbrella.
+    </p>
+    <p>
+      <strong>Medium Range Forecasting:</strong> These forecasts last 3-4 days to 2 weeks and are critical for
+      business budgeting and development. Accurate medium-term forecasting is vital to avoid overspending and
+      unsold stock in organizations.
+    </p>
+    <p>
+      <strong>Long-Range Forecasts:</strong> These forecasts are for times longer than four weeks and are
+      important for major strategic decisions and resource allocation. While they provide valuable insights, they
+      may have inherent uncertainties.
+    </p>
+    <hr>
+    <h2>Mean Precipitation Based on Global High Resolution Climate Data (CHELSA)</h2>
+    <p>
+      In meteorology, precipitation refers to any outcome of atmospheric water vapor condensation that descends
+      from clouds under the influence of gravity. Precipitation takes various forms, including drizzle, rain,
+      sleet, snow, ice pellets, graupel, and hail. It occurs when a segment of the atmosphere reaches a state of
+      saturation with water vapor, achieving 100% relative humidity. This saturation leads to the condensation of
+      water vapor, resulting in the process known as precipitation, where water droplets or solid particles fall
+      from the atmosphere.
+    </p>
+    <p>
+      It's important to note that fog and mist, while involving water vapor, are not considered forms of
+      precipitation because the water vapor in these cases doesn't condense significantly enough to fall as
+      droplets. The air can become saturated through two primary mechanisms: either by cooling the air or by
+      introducing additional water vapor into the atmosphere.
+    </p>
+    <p>
+      The formation of precipitation involves the aggregation of smaller water droplets or ice crystals within
+      clouds, as they collide and merge. Additionally, brief, intense periods of rain occurring in isolated
+      regions are commonly referred to as showers.
+    </p>
+    <div class="iframe-container">
+      <iframe
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Daily_mean_precipitation.gif/488px-Daily_mean_precipitation.gif"
+        frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+</body>
+
+</html>

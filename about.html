@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecasting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        h2 {
+            font-size: 24px;
+            color: #3498db;
+            transition: color 0.3s;
+        }
+        h2:hover {
+            color: #e74c3c;
+        }
+        p {
+            font-size: 16px;
+            margin: 0;
+        }
+        .subNavbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .subNavbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .subNavbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }       
+
+    /* --------------------navbar----------------------- */
+
+    nav {
+      z-index: 99;
+      width: 100%;
+      background: #83a7cb;
+    }
+
+    nav .wrapper {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      background-color: steelblue;
+    }
+
+    .wrapper .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 75px;
+      width: 75px;
+    }
+
+    .logo a {
+      color: #000000;
+      font-size: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .wrapper .nav-links {
+      display: flex;
+      gap: 75px;
+      margin-right: 75px;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links li a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 9px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      font-weight:bold ;
+    }
+
+    .nav-links .mobile-item {
+      display: none;
+    }
+
+    .wrapper .btn {
+      color: #000000;
+      font-size: 20px;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media screen and (max-width: 970px) {
+      .wrapper .btn {
+        display: block;
+      }
+
+      .wrapper .nav-links {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        max-width: 350px;
+        top: 0;
+        left: -100%;
+        background: #242526;
+        display: block;
+        padding: 50px 10px;
+        line-height: 50px;
+        overflow-y: auto;
+        box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.18);
+        transition: all 0.3s ease;
+      }
+
+      .nav-links li {
+        margin: 15px 0;
+      }
+
+      .nav-links li a {
+        padding: 0 20px;
+        display: block;
+        font-size: 20px;
+      }
+
+      .nav-links .desktop-item {
+        display: none;
+      }
+
+      .nav-links .mobile-item {
+        display: block;
+        color: #000000;
+        font-size: 20px;
+        font-weight: 500;
+        padding-left: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .nav-links .mobile-item:hover {
+        font-weight: bold;
+      }
+    }
+
+    /* ----------------------------------------------------------------- */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            h2 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="wrapper">
+          <div class="logo">
+            <img src="./logo.png" alt="logo">
+            <a href="#">Weather Forecast</a>
+          </div>
+          <ul class="nav-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./usage.html">Usage</a></li>
+            <li><a href="./about.html" class="desktop-item">About</a></li>
+          </ul>
+        </div>
+      </nav>
+ 
+    <div class="subNavbar">
+        <a href="#section-what-is">What is Weather Forecasting</a>
+        <a href="#section-data-collection">Data Collection</a>
+        <a href="#section-computer-models">Computer Models</a>
+        <a href="#section-short-long-term">Short-Term vs. Long-Term</a>
+        <a href="#section-accuracy">Accuracy</a>
+        <a href="#section-improving-tech">Improving Technology</a>
+        <a href="#section-applications">Applications</a>
+        <a href="#section-extreme-events">Extreme Weather Events</a>
+        <a href="#section-climate-change">Climate Change</a>
+        <a href="#section-global-collab">Global Collaboration</a>
+        <a href="#section-weather-instruments">Weather Instruments</a>
+        <a href="#section-remote-sensing">Remote Sensing</a>
+    </div>
+    <div class="container">
+        <section id="section-what-is">
+            <h2>What is Weather Forecasting?</h2>
+            <p>Weather forecasting is the process of predicting the state of the Earth's atmosphere at a specific location and time in the future.</p>
+        </section>
+        <section id="section-data-collection">
+            <h2>Data Collection</h2>
+            <p>Weather forecasters collect data from a wide range of sources, including weather stations, satellites, radar systems, and weather balloons. This data includes information on temperature, humidity, wind speed and direction, air pressure, and more.</p>
+        </section>
+        <section id="section-computer-models">
+            <h2>Computer Models</h2>
+            <p>Meteorologists use computer models to simulate the behavior of the atmosphere. These models take into account the data collected and use complex mathematical equations to make predictions about how the weather will change over time.</p>
+        </section>
+        <section id="section-short-long-term">
+            <h2>Short-Term vs. Long-Term</h2>
+            <p>Weather forecasting can be divided into short-term and long-term forecasting. Short-term forecasts typically cover the next few days and focus on immediate weather conditions. Long-term forecasts, on the other hand, extend over several days to weeks and provide a broader outlook.</p>
+        </section>
+        <section id="section-accuracy">
+            <h2>Accuracy</h2>
+            <p>Weather forecasts are subject to varying degrees of accuracy. Short-term forecasts tend to be more accurate, while long-term forecasts are less precise due to the inherent complexity of the atmosphere.</p>
+        </section>
+        <section id="section-improving-tech">
+            <h2>Improving Technology</h2>
+            <p>Advances in technology have greatly improved the accuracy of weather forecasting. Supercomputers, better data collection methods, and improved modeling techniques have all contributed to more reliable predictions.</p>
+        </section>
+        <section id="section-applications">
+            <h2>Applications</h2>
+            <p>Weather forecasting is used in a wide range of applications, including agriculture, transportation, energy production
+        </section>
+        <section id ="section-extreme-events">
+            <h2>Extreme Weather Events</h2>
+            <p>Weather forecasting is essential for predicting and preparing for extreme weather events, such as hurricanes, tornadoes, blizzards, and heatwaves. Timely warnings can save lives and property.</p>
+        </section>
+        <section id="section-climate-change">
+            <h2>Climate Change</h2>
+            <p>Weather forecasting also plays a role in understanding and monitoring long-term climate trends. It helps track changes in weather patterns and provides data for climate research.</p>
+        </section>
+        <section id="section-global-collab">
+            <h2>Global Collaboration</h2>
+            <p>International cooperation is vital in weather forecasting. Meteorological organizations worldwide share data and research to improve global forecasting accuracy and respond to global weather-related challenges.</p>
+        </section>
+        <section id="section-weather-instruments">
+            <h2>Weather Instruments</h2>
+            <p>Various instruments are used in weather data collection, such as anemometers to measure wind speed, barometers to measure air pressure, and rain gauges to measure precipitation. These instruments help gather essential data for forecasts.</p>
+        </section>
+        <section id="section-remote-sensing">
+            <h2>Remote Sensing</h2>
+            <p>Satellites equipped with remote sensing technology play a crucial role in monitoring the Earth's atmosphere, oceans, and land surfaces. They provide valuable data for forecasting weather and tracking climate changes.</p>
+        </section>
+    </body>
+    
+    <script>
+        const sections = document.querySelectorAll('.container section');
+        const navLinks = document.querySelectorAll('.subNavbar a');
+
+        navLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
+                sections.forEach((section) => {
+                    section.style.backgroundColor = '#fff'; 
+                    section.style.color = '#000'; 
+                    section.style.fontWeight = 'normal'; 
+                });
+
+                sections[index].style.backgroundColor = 'black'; 
+                sections[index].style.color = 'white'; 
+                sections[index].style.fontWeight = 'bold'; 
+
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</html>
